@@ -15,11 +15,12 @@ public class GlobalExceptionHandler {
 
     /**
      * 捕获业务异常
-     * @param ex
-     * @return
+     *
+     * @param ex 业务异常
+     * @return 统一响应结果
      */
     @ExceptionHandler
-    public Result exceptionHandler(BaseException ex){
+    public Result<Object> exceptionHandler(BaseException ex) {
         log.error("异常信息：{}", ex.getMessage());
         return Result.error(ex.getMessage());
     }

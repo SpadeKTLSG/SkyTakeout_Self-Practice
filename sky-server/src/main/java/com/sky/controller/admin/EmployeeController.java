@@ -33,6 +33,8 @@ public class EmployeeController {
 
     /**
      * 登录
+     *
+     * @param employeeLoginDTO 员工登录DTO
      */
     @PostMapping("/login")
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {

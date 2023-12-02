@@ -2,10 +2,17 @@ server:
   port: 8080
 
 spring:
+
   profiles:
     active: dev
+
+
   main:
+    #关闭banner
+    banner-mode: off
     allow-circular-references: true
+
+
   datasource:
     druid:
       driver-class-name: ${sky.datasource.driver-class-name}
@@ -13,10 +20,14 @@ spring:
       username: ${sky.datasource.username}
       password: ${sky.datasource.password}
 
+
+
 mybatis:
+
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.sky.entity
+
   configuration:
     #开启驼峰命名
     map-underscore-to-camel-case: true
@@ -25,9 +36,9 @@ logging:
   level:
     com:
       sky:
-        mapper: debug
-        service: info
-        controller: info
+        mapper: debug #mybatis日志
+        service: info   #service日志
+        controller: info  #controller日志
 
 sky:
   jwt:
