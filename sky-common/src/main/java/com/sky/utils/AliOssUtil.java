@@ -61,6 +61,7 @@ public class AliOssUtil {
 
         //文件访问路径规则 https://BucketName.Endpoint/ObjectName
         StringBuilder stringBuilder = new StringBuilder("https://");
+        //拼接图片网址, 便于访问
         stringBuilder
                 .append(bucketName)
                 .append(".")
