@@ -59,6 +59,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 用户下单
+     *
      * @param ordersSubmitDTO
      * @return
      */
@@ -67,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
 
         //1. 处理各种业务异常（地址簿为空、购物车数据为空）
         AddressBook addressBook = addressBookMapper.getById(ordersSubmitDTO.getAddressBookId());
-        if(addressBook == null){
+        if (addressBook == null) {
             //抛出业务异常
             throw new AddressBookBusinessException(MessageConstant.ADDRESS_BOOK_IS_NULL);
         }
@@ -82,7 +83,7 @@ public class OrderServiceImpl implements OrderService {
         shoppingCart.setUserId(userId);
         List<ShoppingCart> shoppingCartList = shoppingCartMapper.list(shoppingCart);
 
-        if(shoppingCartList == null || shoppingCartList.size() == 0){
+        if (shoppingCartList == null || shoppingCartList.size() == 0) {
             //抛出业务异常
             throw new ShoppingCartBusinessException(MessageConstant.SHOPPING_CART_IS_NULL);
         }
@@ -126,18 +127,20 @@ public class OrderServiceImpl implements OrderService {
         return orderSubmitVO;
     }
 
-    @Value("${sky.shop.address}")
-    private String shopAddress;
+    //百度相关API
+//    @Value("${sky.shop.address}")
+//    private String shopAddress;
 
-    @Value("${sky.baidu.ak}")
-    private String ak;
+//    @Value("${sky.baidu.ak}")
+//    private String ak;
 
     /**
      * 检查客户的收货地址是否超出配送范围
+     *
      * @param address
      */
     private void checkOutOfRange(String address) {
-        Map map = new HashMap();
+       /* Map map = new HashMap();
         map.put("address",shopAddress);
         map.put("output","json");
         map.put("ak",ak);
@@ -193,7 +196,7 @@ public class OrderServiceImpl implements OrderService {
         if(distance > 5000){
             //配送距离超过5000米
             throw new OrderBusinessException("超出配送范围");
-        }
+        }*/
     }
 
     /**
@@ -249,9 +252,9 @@ public class OrderServiceImpl implements OrderService {
 
         //通过websocket向客户端浏览器推送消息 type orderId content
         Map map = new HashMap();
-        map.put("type",1); // 1表示来单提醒 2表示客户催单
-        map.put("orderId",ordersDB.getId());
-        map.put("content","订单号：" + outTradeNo);
+        map.put("type", 1); // 1表示来单提醒 2表示客户催单
+        map.put("orderId", ordersDB.getId());
+        map.put("content", "订单号：" + outTradeNo);
 
         String json = JSON.toJSONString(map);
         webSocketServer.sendToAllClient(json);
@@ -590,6 +593,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 客户催单
+     *
      * @param id
      */
     public void reminder(Long id) {
@@ -602,9 +606,9 @@ public class OrderServiceImpl implements OrderService {
         }
 
         Map map = new HashMap();
-        map.put("type",2); //1表示来单提醒 2表示客户催单
-        map.put("orderId",id);
-        map.put("content","订单号：" + ordersDB.getNumber());
+        map.put("type", 2); //1表示来单提醒 2表示客户催单
+        map.put("orderId", id);
+        map.put("content", "订单号：" + ordersDB.getNumber());
 
         //通过websocket向客户端浏览器推送消息
         webSocketServer.sendToAllClient(JSON.toJSONString(map));

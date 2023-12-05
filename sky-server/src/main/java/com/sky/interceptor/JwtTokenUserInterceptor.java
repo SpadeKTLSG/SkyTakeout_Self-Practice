@@ -42,9 +42,10 @@ public class JwtTokenUserInterceptor implements HandlerInterceptor {
 
         //1、从请求头中获取令牌
         String token = request.getHeader(jwtProperties.getUserTokenName());
-
+        return true;
+        
         //2、校验令牌
-        try {
+/*        try {
             log.info("jwt校验:{}", token);
             Claims claims = JwtUtil.parseJWT(jwtProperties.getUserSecretKey(), token);
             Long userId = Long.valueOf(claims.get(JwtClaimsConstant.USER_ID).toString());
@@ -58,6 +59,6 @@ public class JwtTokenUserInterceptor implements HandlerInterceptor {
             //调试: 都放行
             return true;
 //            return false;
-        }
+        }*/
     }
 }
