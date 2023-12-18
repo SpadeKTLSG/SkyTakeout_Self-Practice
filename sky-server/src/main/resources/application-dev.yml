@@ -12,10 +12,10 @@ sky:
     access-key-secret: U5GEG58wOHz2rcrEGFdOls1NbSlQZC
     bucket-name: sktlsgbucket
   redis:
-    host: 192.168.91.129
+    host: 124.70.10.183 # TODO : 展示时候请删除
     port: 6379
-    password: 2333
-    database: 10
+    password: qwe123
+    database: 14
   wechat:
     appid: wx7eca24934e7ba12e
     secret: 224abf53d4c01bbc173191e3cd3431d8
