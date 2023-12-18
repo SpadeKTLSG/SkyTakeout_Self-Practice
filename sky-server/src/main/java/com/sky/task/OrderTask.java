@@ -32,7 +32,7 @@ public class OrderTask {
         // select * from orders where status = ? and order_time < (当前时间 - 15分钟)
         List<Orders> ordersList = orderMapper.getByStatusAndOrderTimeLT(Orders.PENDING_PAYMENT, time);
 
-        if (ordersList != null && ordersList.size() > 0) {
+        if (ordersList != null && !ordersList.isEmpty()) {
             for (Orders orders : ordersList) {
                 orders.setStatus(Orders.CANCELLED);
                 orders.setCancelReason("订单超时，自动取消");
@@ -53,7 +53,7 @@ public class OrderTask {
 
         List<Orders> ordersList = orderMapper.getByStatusAndOrderTimeLT(Orders.DELIVERY_IN_PROGRESS, time);
 
-        if (ordersList != null && ordersList.size() > 0) {
+        if (ordersList != null && !ordersList.isEmpty()) {
             for (Orders orders : ordersList) {
                 orders.setStatus(Orders.COMPLETED);
                 orderMapper.update(orders);

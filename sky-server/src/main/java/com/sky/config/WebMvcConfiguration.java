@@ -29,7 +29,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
     @Autowired
     private JwtTokenAdminInterceptor jwtTokenAdminInterceptor;
-    
+
     @Autowired
     private JwtTokenAdminInterceptor jwtTokenUserInterceptor;
 

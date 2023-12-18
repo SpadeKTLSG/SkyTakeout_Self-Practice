@@ -6,25 +6,15 @@ sky:
     database: sky_take_out
     username: root
     password: 2333
-  alioss:
+  alioss: #对象存储
     endpoint: oss-cn-shanghai.aliyuncs.com
-    access-key-id: LTAI5tJmdQfHwTByeVcHZYXj
-    access-key-secret: U5GEG58wOHz2rcrEGFdOls1NbSlQZC
-    bucket-name: sktlsgbucket
-  redis:
-    host: 124.70.10.183 # TODO : 展示时候请删除
-    port: 6379
-    password: qwe123
+    access-key-id:
+    access-key-secret:
+    bucket-name:
+  redis: #Redis
+    host:
+    port:
+    password:
     database: 14
-  wechat:
-    appid: wx7eca24934e7ba12e
-    secret: 224abf53d4c01bbc173191e3cd3431d8
-    #    以下是错误代码, 为了保证服务运行而使用
-    mchid: 1561414331
-    mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
-    privateKeyFilePath: D:\pay\apiclient_key.pem
-    apiV3Key: CZBK51236435wxpay435434323FFDuv3
-    weChatPayCertFilePath: D:\pay\wechatpay_166D96F876F45C7D07CE98952A96EC980368ACFC.pem
-    notifyUrl: https://58869fb.r2.cpolar.top/notify/paySuccess
-    refundNotifyUrl: https://58869fb.r2.cpolar.top/notify/refundSuccess
+
 

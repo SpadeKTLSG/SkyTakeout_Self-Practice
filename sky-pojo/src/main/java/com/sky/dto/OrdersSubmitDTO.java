@@ -37,5 +37,5 @@ public class OrdersSubmitDTO implements Serializable {
 
     //总金额
     private BigDecimal amount;
-    
+
 }

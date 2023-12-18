@@ -2,8 +2,6 @@ package com.sky.context;
 
 
 //存储当前处理进程的id
-//FIXME 存在重大bug, 无法获取UserID
-//应该是特殊原因, 现在直接写死处理
 public class BaseContext {
 
     public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
@@ -13,7 +11,7 @@ public class BaseContext {
     }
 
     public static Long getCurrentId() {
-//        return threadLocal.get();
+//        return threadLocal.get(); FIXME
         return 1L;
     }
 
